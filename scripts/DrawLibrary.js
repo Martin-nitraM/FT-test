@@ -81,9 +81,9 @@ function worker_function(){
         offsetY = 0;
 
         constructor(amplitude, phase, frequency, oX, oY) {
-            this.amplitude = amplitude;
-            this.phase = phase;
-            this.angle = phase;
+            this.amplitude = Math.abs(amplitude);
+            this.phase = amplitude < 0 ? phase + Math.PI : phase;
+            this.angle = this.phase;
             this.frequency = frequency;
             this.originX = oX;
             this.originY = oY;
@@ -137,6 +137,29 @@ function worker_function(){
             context.stroke();
         }
 
+        addVectorToPath(context) {
+            if (this.amplitude > 1) {
+                context.lineTo(this.getX() + this.originX, this.getY() + this.originY);
+            }
+            
+        }
+
+        addCircleToPath(context) {
+            if (this.amplitude > 1) {
+                context.moveTo(this.originX + this.offsetX + this.amplitude, this.originY + this.offsetY);
+                context.ellipse(this.originX + this.offsetX, this.originY + this.offsetY,this.amplitude, this.amplitude, 0, 0, PI2);
+                //context.arc(this.originX + this.offsetX, this.originY + this.offsetY, this.amplitude, 0, PI2);
+            }
+        }
+ 
+        get origin() {
+            return {x: this.originX + this.offsetX, y: this.originY + this.offsetY};
+        }
+
+        get end() {
+            return {x: this.x + this.offsetX, y: this.y + this.offsetY};
+        }
+
         drawCircle(context) {
             if (this.amplitude > 1) {
                 context.beginPath();
@@ -170,6 +193,7 @@ function worker_function(){
             this.originY = vectors[0].getOriginY();
             this.xAxisPos = this.originY;
             this.yAxisLength = this.originY * 2;
+            this.vectorPath = new Array(vectors.length + 1);
         }
 
         setFunction(func) {
@@ -249,17 +273,22 @@ function worker_function(){
 
             this.context.strokeStyle = "#707007";
             this.context.lineWidth = 1.7;
+            this.context.beginPath();
+            this.context.moveTo(this.vectors[0].originX, this.vectors[0].originY);
             for (let i = 0; i < N; i++) {
                 if (i > c) break;
-                this.vectors[i].draw(this.context);
+                this.vectors[i].addVectorToPath(this.context);
             }
+            this.context.stroke();
 
             this.context.strokeStyle = "#777777";
             this.context.lineWidth = .7;
+            this.context.beginPath();
             for (let i = 0; i < N; i++) {
                 if (i > c) break;
-                this.vectors[i].drawCircle(this.context);
+                this.vectors[i].addCircleToPath(this.context);
             }
+            this.context.stroke();
         }
 
         removeIfLongEnough() {

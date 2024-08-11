@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="cz">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../scripts/DrawLibrary.js"></script>
+    <script src="../scripts/Editor.js"></script>
+    <title>Fourierova transformace - Editor</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css" />
+    <div style="margin-top: 3em;">
+        <div class="PageContent">
+            <div>
+                <div style="display: flex; justify-content: center; font: 1em sans-serif; margin: 1em;">
+                    <table id="vectors">
+                        <tr>
+                            <td>
+                                Amplituda : <input type="number" value="47" min="1" max="201" style="margin-right: 1em; margin-left: 0.7em;" onchange="valueChanged(this)">
+                            </td>
+                            <td>
+                                Fáze : <input type="number" value="0" min="0" max="359" style="margin-right: 1em; margin-left: 0.7em;" onchange="valueChanged(this)">
+                            </td>
+                            <td>
+                                Frekvence : <input type="number" value="1" min="1" max="21" style="margin-right: 1em; margin-left: 0.7em;" onchange="valueChanged(this)">
+                            </td>
+                            <td style="width: 25px; height: 25px">
+                                <svg height="25" width="25" style="display: none;" onclick="removeButtonClick(this)">
+                                    <circle cx="12" cy="12" r="11" fill="red" style="cursor: pointer;"/> 
+                                      <line x1="5" y1="12" x2="20" y2="12" style="stroke:rgb(255,255,255);stroke-width:3;cursor: pointer;" stroke-linecap="round" />
+                                      Sorry, your browser does not support inline SVG.
+                                      <!--stroke="black" stroke-width="1"-->
+                                </svg>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                 </div>
+                <div style="display: flex; justify-content: center; font: 1em sans-serif; margin: 1em;">
+                    <svg height="25" width="25" onclick="addButtonClick()">
+                        <circle cx="12" cy="12" r="11" fill="green" style="cursor: pointer;"/> 
+                          <line x1="5" y1="12" x2="20" y2="12" style="stroke:rgb(255,255,255);stroke-width:3;cursor: pointer;" stroke-linecap="round" />
+                          <line x1="12" y1="5" x2="12" y2="20" style="stroke:rgb(255,255,255);stroke-width:3;cursor: pointer;" stroke-linecap="round" />
+                          Sorry, your browser does not support inline SVG.
+                    </svg>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <div style="box-shadow: 0 0 7px 3px rgb(163, 163, 163); justify-content: center; width:fit-content;">
+                        <canvas id="fourier_canvas" width="1299" height="333"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="Description">
+                <a href="fourierova_transformace.html" style="margin-right: 333px;">< Fourierova transformace</a>
+                <a href="harmonicke_funkce.html">Harmonické funkce ></a>
+            </div>
+        </div>
+        <div class="CopyRight">Autor: Martin V.</div>
+    </div>
+</body>
+</html>

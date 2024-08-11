@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="cz">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../scripts/DrawLibrary.js"></script>
+    <script src="../scripts/FourierTransform.js"></script>
+    <script defer src="../scripts/HarmonicFunctions.js"></script>
+    <title>Harmonicke funkce</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css" />
+    <div style="margin-top: 3em;">
+        <h1>Harmonické funkce</h1>
+        <div class="PageContent">
+            <img style="height: 81px;" src="../images/sin_cos.svg"/>
+            <div class="RangeInput">
+                <div class="Description">Fáze: </div>
+                <input type="range" min="-360" max="360" onchange="drawSine(this.value)">
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <div style="box-shadow: 0 0 7px 3px rgb(163, 163, 163); justify-content: center; width:fit-content;">
+                    <canvas id="sine_func_canvas" width="1299" height="333"></canvas>
+                </div>
+            </div>
+            <div class="RangeInput">
+                <div class="Description">Fáze: </div>
+                <input type="range" min="-360" max="360" onchange="drawCosine(this.value)">
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <div style="box-shadow: 0 0 7px 3px rgb(163, 163, 163); justify-content: center; width:fit-content;">
+                    <canvas id="cosine_func_canvas" width="1299" height="333"></canvas>
+                </div>
+            </div>
+            <div class="Description">
+                <a href="editor.html" style="margin-right: 333px;">< Editor</a>
+                <a href="fourierova_transformace.html">Fourierova transformace ></a>
+            </div>
+        </div>
+        <div class="CopyRight">Autor: Martin V.</div>
+    </div>
+</body>
+</html>

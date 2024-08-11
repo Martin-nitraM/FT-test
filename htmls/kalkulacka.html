@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulacka impedanci</title>
+    <script type="text/javascript" id="MathJax-script" async
+    src="../scripts/MathJax/tex-chtml.js">
+    </script>
+    <script src="../scripts/DrawLibrary.js"></script>
+</head>
+<body>
+    <style>
+    .PageContent{
+        margin-top: 2.1em;
+        margin-bottom: 2.1em;
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .CopyRight {
+        position: fixed;
+        top: 0%;
+        right: 0%;
+        background: rgb(232, 232, 232);
+        box-shadow: 0 0 11px gray;
+        font-size: 1.5em;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .Equation{
+        border: 3px solid black;
+        border-radius: 7px;
+        min-width: 100px;
+        width: auto;
+        display: inline-block;
+        text-align: justify;
+        margin-right: 1em;
+        margin-left: 0.7em;
+        padding: 0.3em;
+        font-size: 1.7em;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .SetEquation{
+        margin-right: 1em;
+        margin-left: 0.7em;
+        font-size: 1.7em;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    select {
+        font-size: 1em;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    th{
+        padding-bottom: 1em;
+    }
+    .Calculate{
+        margin-top: 1em;
+        margin-right: 1em;
+        margin-left: 0.7em;
+        font-size: 1.7em;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .CalculationProgession{
+        margin-top: 2.1em;
+        margin-bottom: 2.1em;
+        text-align: justify;
+        text-align-last: center;
+        font-size: 1.1em;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    canvas{
+        margin-top: 1em;
+        margin-bottom: 1em;
+        max-width: 100%;
+        height: auto;
+    }
+    </style>
+    <div id="pageContent">
+        <div id="equationInputs" class="PageContent">
+            <input class="SetEquation" type="button" onclick="document.getElementById('equation').innerHTML = createRandom();" value="Náhodný obvod"> 
+            <div class="Equation" id='equation' contenteditable="plaintext-only">(R)</div>
+            <input class="SetEquation" type="button" onclick="setEquation(document.getElementById('equation').innerText)" value="Zadat rovnici">    
+        </div>
+        <div id="circuitImage" class="PageContent">
+
+        </div>
+        <div id="circuitInputs" class="PageContent">
+
+        </div>
+        <div id="calculationProgression" class="CalculationProgession">
+
+        </div>
+        <div id="result" class="PageContent">
+
+        </div>
+        <div id="canvases" style="display: none;">
+            <div class="PageContent">
+                <canvas id="currentVoltageCanvas" width="1000" height="333"></canvas>
+            </div>
+            <div class="PageContent">
+                <canvas id="powerCanvas" width="1000" height="333"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="CopyRight" id="copy">Autor: Martin V.</div>
+    <script src="../scripts/ComplexNumber.js"></script>
+    <script src="../scripts/Equation.js"></script>
+    <script src="../scripts/Equation-Designer.js"></script>
+    <script src="../scripts/Imepdance-Calculator.js"></script>
+</body>
+</html>

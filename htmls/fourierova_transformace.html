@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="cz">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../scripts/DrawLibrary.js"></script>
+    <script src="../scripts/FourierTransform.js"></script>
+    <script defer src="../scripts/ComplexNumber.js"></script>
+    <script defer src="../scripts/FourierTransformCalculator.js"></script>
+    <title>Fourierova transformace</title>
+</head>
+<body>
+    <div style="margin-top: 3em;">
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css" />
+    <h2>Obdélníkový průběh</h2>
+    <img style="height: 81px;" src="../images/square.svg"/>
+    <div class="RangeInput">
+        <div class="Description">Počet harmonických funkcí</div>
+        <input id="square_range" type="range" min="1" max="333" onchange="setVectorsCount(this.value, 0, document.getElementById('square_input'))" value="1">
+        <input id="square_input" class="Description" type="number" min="1" max="333" value="1" step="1.0" onchange="setVectorsCount(this.value, 0, document.getElementById('square_range'))">
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <div style="box-shadow: 0 0 7px 3px rgb(163, 163, 163); justify-content: center; width:fit-content; margin: 2.1em;">
+            <canvas id="square_canvas" width="1299" height="333"></canvas>
+        </div>
+    </div>
+    <h2>Pilový průběh</h2>
+    <img style="height: 81px;" src="../images/saw.svg"/>
+    <div class="RangeInput">
+        <div class="Description">Počet harmonických funkcí</div>
+        <input id="saw_range" type="range" min="1" max="333" onchange="setVectorsCount(this.value, 1, document.getElementById('saw_input'))" value="1">
+        <input id="saw_input" class="Description" type="number" min="1" max="333" value="1" step="1.0" onchange="setVectorsCount(this.value, 1, document.getElementById('saw_range'))">
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <div style="box-shadow: 0 0 7px 3px rgb(163, 163, 163); justify-content: center; width:fit-content; margin: 2.1em;">
+            <canvas id="saw_canvas" width="1299" height="333"></canvas>
+        </div>
+    </div>
+    <h2>Trojúhelníkový průběh</h2>
+    <img style="height: 81px;" src="../images/triangle.svg"/>
+    <div class="RangeInput">
+        <div class="Description">Počet harmonických funkcí</div>
+        <input id="triangle_range" type="range" min="1" max="333" onchange="setVectorsCount(this.value, 2, document.getElementById('triangle_input'))" value="1">
+        <input id="triangle_input" class="Description" type="number" min="1" max="333" value="1" step="1.0" onchange="setVectorsCount(this.value, 2, document.getElementById('triangle_range'))">
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <div style="box-shadow: 0 0 7px 3px rgb(163, 163, 163); justify-content: center; width:fit-content; margin: 2.1em;">
+            <canvas id="triangle_canvas" width="1299" height="333"></canvas>
+        </div>
+    </div>
+    <h2>Libovolný průběh</h2>
+    <div class="Description"><img style="height: 81px;" src="../images/fourier1.svg"/></div>
+    <img style="height: 81px;" src="../images/fourier2.svg"/>
+    <div class="RangeInput">
+        <div class="Description">Počet harmonických funkcí</div>
+        <input id="image_range" type="range" min="1" max="1" onchange="setVectorsCount(this.value, 3, document.getElementById('image_input'))" value="333">
+        <input id="image_input" class="Description" type="number" min="1" max="1" value="1" step="1.0" onchange="setVectorsCount(this.value, 3, document.getElementById('image_range'))">
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <div style="box-shadow: 0 0 7px 3px rgb(163, 163, 163); justify-content: center; width:fit-content; margin: 2.1em;">
+            <canvas id="image_canvas" width="621" height="421"></canvas>
+        </div>
+        <div style="box-shadow: 0 0 7px 3px rgb(163, 163, 163); justify-content: center; width:fit-content; margin: 2.1em;">
+            <canvas id="fourier_canvas" width="621" height="421"></canvas>
+        </div>
+    </div>
+    <div class="Description">
+        <a href="harmonicke_funkce.html" style="margin-right: 333px;">< Harmonicke funkce</a>
+        <a href="editor.html">Editor ></a>
+    </div>
+       
+    </div>
+    <div class="CopyRight">Autor: Martin V.</div>
+</body>
+</html>
